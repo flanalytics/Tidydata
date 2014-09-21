@@ -18,7 +18,7 @@ assign(FName,rbind(testDat,trainDat),envir = .GlobalEnv)
 return(FName)
 }
 
-# Find all files in any subsdirectory ending in test.txt and train.txt
+# Find all files in any subdirectory ending in test.txt and train.txt
 testFiles<-list.files( pattern="*test.txt",recursive=TRUE)
 trainFiles<-list.files( pattern="*train.txt",recursive=TRUE)
 
@@ -39,7 +39,7 @@ activity_labels_df<-read.table("UCI HAR Dataset/activity_labels.txt",stringsAsFa
 
 
 ## Now start to tidy data
-## Need to identify columns containg means and standard deviations of variables
+## Need to identify columns containing means and standard deviations of variables
 ## I have decided to search for the "-mean()" and "-std()" strings
 ##
 
@@ -53,7 +53,7 @@ substrRight <- function(CharVector, n){
 ## Some Desriptions in feature_df use BodyBody rather than Body. Correct This
 features_df$V2<-sub("BodyBody","Body",features_df$V2)
 
-## Search for Variables with names containing mean() or df()
+## Search for Variables with names containing mean() or std()
 TargetMeanVars<-grep("-mean\\(\\)",features_df[,2])
 TargetStdVars<-grep("-std\\(\\)",features_df[,2])
 
